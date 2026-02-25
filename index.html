@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #0e0e0e;
+    --accent: #ff4d5a;
+    --text: #ffffff;
+    --muted: #999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+nav.scrolled {
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--muted);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent), transparent 70%);
+    animation: pulse 6s infinite alternate;
+    z-index: -1;
+}
+.section-box {
+    background: #1a1a1a;   /* dark card background */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    margin-bottom: 60px;
+    transition: 0.3s;
+}
+
+.section-box:hover {
+    transform: translateY(-5px);
+}
+
+@keyframes pulse {
+    from { transform: scale(1); opacity: 0.5; }
+    to { transform: scale(1.4); opacity: 0.2; }
+}
+
+/* SECTIONS */
+section {
+    padding: 100px 10%;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.about img {
+    width: 300px;
+    border-radius: 12px;
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+/* SKILLS */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 20px;
+}
+
+.skill-card {
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    background: var(--accent);
+}
+
+/* PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.project {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.project img {
+    width: 100%;
+    display: block;
+    transition: 0.4s;
+}
+
+.project:hover img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.project:hover .project-overlay {
+    opacity: 1;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+    text-align: center;
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: auto;
+    min-height: 100px;
+}
+
+/* CONTACT */
+form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--muted);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero h1 { font-size: 2.5rem; }
+    nav { padding: 15px 5%; }
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; 
+}
+
+.hero-pfp {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%; 
+    border: 4px solid var(--accent); 
+    object-fit: cover; 
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+}
+.skill-graphic {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.skill-card svg {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Container styling */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.project {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #2d2d2d;
+  aspect-ratio: 4 / 3;
+}
+
+/* Visualization Styles */
+.project-visual {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3a3a3a 0%, #1a1a1a 100%);
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+/* Specific Project Graphics */
+.task-c { border-bottom: 4px solid #00599C; } /* C Blue */
+/* Mobile Data Analysis Graphic */
+.phone-mockup {
+    width: 50px;
+    height: 90px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 5px;
+    overflow: hidden;
+}
+
+/* Creating a small speaker/camera notch at the top */
+.phone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 3px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* The "Chart" inside the phone */
+.chart-line {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #4CAF50 30%, transparent 30%);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+/* Adding bars to make it look like data analysis */
+.chart-line::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        rgba(255,255,255,0.2) 5px,
+        rgba(255,255,255,0.2) 10px
+    );
+    position: absolute;
+}
+.php-store { border-bottom: 4px solid #777BB4; } /* PHP Purple */
+
+.code-icon { font-size: 3rem; font-weight: bold; font-family: monospace; }
+.cart-icon { font-size: 3.5rem; }
+.php-tag { font-size: 0.8rem; background: #777BB4; padding: 2px 8px; border-radius: 4px; margin-top: 5px; }
+
+/* Overlay styling */
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.9); /* Slightly darker for readability */
+  color: #fff;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transform: translateY(70%); /* Hides context until hover */
+  transition: transform 0.3s ease-in-out;
+}
+
+.project:hover .project-overlay {
+  transform: translateY(0); /* Slides up on hover */
+}
+
+.project-context {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-top: 8px;
+  color: #ccc;
+  font-weight: normal;
+}
+
+strong {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 5% auto;
+    padding: 40px;
+    border: 1px solid var(--accent);
+    width: 80%;
+    max-width: 700px;
+    border-radius: 15px;
+    position: relative;
+    color: white;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: #999;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: var(--accent);
+}
+
+.modal h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.modal p {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+/* --- RESPONSIVE UPDATES --- */
+
+/* General mobile-first adjustments */
+section {
+    padding: 60px 5%; /* Reduced padding for mobile */
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Fluid typography */
+    line-height: 1.1;
+}
+
+/* Adjust Grids */
+.skills-grid, .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+/* Modal Responsiveness */
+.modal-content {
+    width: 95%;
+    margin: 20% auto;
+    padding: 20px;
+}
+
+/* Navigation for Mobile */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+    }
+    
+    nav a {
+        margin-left: 15px;
+    }
+
+    .section-box {
+        padding: 25px 15px;
+    }
+
+    .hero-pfp {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/* Small screens/iPhone SE */
+@media (max-width: 380px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    nav a {
+        margin-left: 10px;
+        font-size: 0.8rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div>
+  <div class="hero-content">
+    <img src="pfp.png" alt="Profile Picture" class="hero-pfp">
+    <h2>ROSE MARIE D. DESPI</h2>
+     <h3>BSIT-3SOUTH</h3>
+  </div>
+        <h1>Crafting Visual Stories</h1>
+        <p>Design. Emotion. Narrative.</p>
+    </div>
+</section>
+
+<section id="about">
+    <div class="section-box">
+
+    <h2 class="section-title">About Me</h2>
+    <div class="about">
+        <img src="ob.png" alt="portrait">
+        <div class="about-text">
+            <h3>_   I am a passionate and driven individual with strong skills in networking and design. My expertise lies in building reliable connections—whether through technical networking systems or professional collaborations—and transforming ideas into visually engaging designs.</h4>
+<br>
+            <hr>
+            <br>
+            <p>🎯 Networking Strengths: Skilled in establishing and maintaining efficient systems, troubleshooting issues, and ensuring seamless communication across platforms. I thrive in collaborative environments where teamwork and connectivity are essential.</p> 
+<br>
+            <hr>
+            <br>
+            <p>🎨 Design Expertise: Creative and detail-oriented, with a talent for crafting user-friendly interfaces and visually appealing layouts. I enjoy blending functionality with aesthetics to deliver designs that are both practical and impactful.</p>
+<br>
+            <hr>
+            <br>
+            <p>I take pride in combining technical precision with creative vision, making me adaptable to both analytical and artistic challenges. My goal is to continue growing as a versatile professional who bridges technology and design to create meaningful solutions.</p>
+        </div>
+    </div>
+    </div>
+</section>
+
+<section id="skills">
+  <div class="section-box">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Networking</h3>
+        <div class="skill-graphic">
+          <!-- Networking SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" stroke="white" stroke-width="2" viewBox="0 0 100 100">
+            <circle cx="50" cy="20" r="8" fill="#4facfe"/>
+            <circle cx="20" cy="70" r="8" fill="#4facfe"/>
+            <circle cx="80" cy="70" r="8" fill="#4facfe"/>
+            <line x1="50" y1="28" x2="20" y2="62" stroke="#00f2fe"/>
+            <line x1="50" y1="28" x2="80" y2="62" stroke="#00f2fe"/>
+            <line x1="20" y1="70" x2="80" y2="70" stroke="#00f2fe"/>
+          </svg>
+        </div>
+        <p>Proficient in building and maintaining reliable systems, troubleshooting, and ensuring seamless communication across platforms.</p>
+      </div>
+
+      <div class="skill-card">
+        <h3>Designing</h3>
+        <div class="skill-graphic">
+          <!-- Designing SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="none" stroke="white" stroke-width="2" viewBox="0 0 100 100">
+            <rect x="15" y="20" width="70" height="50" rx="8" fill="#ff9a9e"/>
+            <line x1="15" y1="40" x2="85" y2="40" stroke="#fad0c4"/>
+            <line x1="15" y1="60" x2="85" y2="60" stroke="#fad0c4"/>
+            <circle cx="35" cy="75" r="8" fill="#fad0c4"/>
+            <circle cx="65" cy="75" r="8" fill="#fad0c4"/>
+          </svg>
+        </div>
+        <p>Experienced in creating user-friendly interfaces and visually engaging layouts that balance functionality with aesthetics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="projects">
+    <div class="section-box">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            
+            <div class="project" onclick="openModal('task')">
+                <div class="project-visual task-c">
+                    <i class="code-icon">&lt;/C&gt;</i>
+                    <p>Task Manager</p>
+                </div>
+                <div class="project-overlay">
+                    <strong>Task Manager in C</strong>
+                    <p class="project-context">A low-level CLI application utilizing linked lists and file I/O.</p>
+                </div>
+            </div>
+
+            <div class="project" onclick="openModal('mobile')">
+                <div class="project-visual mobile-data">
+                    <div class="phone-mockup">
+                        <div class="chart-line"></div>
+                    </div>
+                </div>
+                <div class="project-overlay">
+                    <strong>Mobile Data Analysis</strong>
+                    <p class="project-context">Visualizing complex datasets into digestible mobile charts.</p>
+                </div>
+            </div>
+
+            <div class="project" onclick="openModal('php')">
+                <div class="project-visual php-store">
+                    <i class="cart-icon">🛒</i>
+                    <span class="php-tag">PHP</span>
+                </div>
+                <div class="project-overlay">
+                    <strong>PHP E-Commerce Store</strong>
+                    <p class="project-context">Full-stack shop with secure MySQL database and authentication.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="contact">
+    <div class="section-box">
+
+    <h2 class="section-title">Contact</h2>
+    <form onsubmit="submitForm(event)">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    </div>
+</section>
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modalBody">
+            </div>
+    </div>
+</div>
+<footer>
+    © 2026 Rose Marie D. Despi — Designed with intention.
+</footer>
+
+<script>
+// Navbar background on scroll
+window.addEventListener("scroll", function() {
+    document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// Testimonials slider
+const testimonials = [
+    "“An exceptional storyteller with rare visual intuition.”",
+    "“Transforms ideas into immersive visual journeys.”",
+    "“Professional, visionary, and deeply creative.”"
+];
+
+let index = 0;
+setInterval(() => {
+    index = (index + 1) % testimonials.length;
+    document.getElementById("testimonial").textContent = testimonials[index];
+}, 4000);
+
+// Form animation
+function submitForm(e){
+    e.preventDefault();
+    alert("Thank you! Your message has been sent.");
+}
+
+// Scroll reveal
+const sections = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.style.opacity = 1;
+            sec.style.transform = "translateY(0)";
+        }
+    });
+});
+sections.forEach(sec => {
+    sec.style.opacity = 0;
+    sec.style.transform = "translateY(50px)";
+    sec.style.transition = "all 0.8s ease";
+});
+
+// Modal Logic
+const modal = document.getElementById("projectModal");
+const modalBody = document.getElementById("modalBody");
+const closeBtn = document.getElementsByClassName("close-modal")[0];
+
+const projectData = {
+    task: {
+        title: "Task Manager in C",
+        description: "This project explores low-level memory management. It features a custom-built linked list structure to handle dynamic task entry, priority sorting algorithms, and local file storage using C's standard I/O libraries."
+    },
+    mobile: {
+        title: "Mobile Data Analysis",
+        description: "Focused on high-performance data processing on mobile hardware. This tool transforms raw JSON data into interactive visual charts, allowing users to track performance trends directly from their smartphones."
+    },
+    php: {
+        title: "PHP E-Commerce Store",
+        description: "A comprehensive web application with a full administrative backend. It includes secure password hashing, session management for shopping carts, and a relational database for inventory and order tracking."
+    }
+};
+
+function openModal(projectId) {
+    const data = projectData[projectId];
+    modalBody.innerHTML = `
+        <h2>${data.title}</h2>
+        <hr style="border: 0; border-top: 1px solid #333; margin-bottom: 20px;">
+        <p>${data.description}</p>
+        <br>
+        <button onclick="closeModal()" style="width:auto; padding: 10px 30px;">Close Preview</button>
+    `;
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden"; // Prevent background scroll
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+// Close when clicking X or clicking outside the box
+closeBtn.onclick = closeModal;
+window.onclick = function(event) {
+    if (event.target == modal) closeModal();
+}
+</script>
+
+</body>
+</html>
